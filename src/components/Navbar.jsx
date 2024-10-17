@@ -1,13 +1,14 @@
 import logo from '../assets/logo/khojo.png'
+import { Link } from 'react-router-dom'
 
 
 const Navbar = ({setDarkTheme, darkTheme}) => {
   return (
     <div className="navbar  bg-base-300 flex justify-between">
       <div>
-        <a className="">
+        <Link to={'/'}>
           <img src={logo} alt="" className='w-16 cursor-pointer'/>
-        </a>
+        </Link>
         <label className=" ms-20 input input-bordered flex items-center gap-2 outline-0">
           <input type="text" className="grow" placeholder="Search" />
           <svg
