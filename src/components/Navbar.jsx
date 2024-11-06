@@ -1,8 +1,16 @@
 import logo from '../assets/logo/khojo.png'
 import { Link } from 'react-router-dom'
+import { useState } from 'react';
+// import PropTypes from 'prop-types'
 
 
-const Navbar = ({setDarkTheme, darkTheme}) => {
+const Navbar = () => {
+  const [darkTheme, setDarkTheme] = useState(false);
+  if(darkTheme){
+    document.querySelector('html').setAttribute('data-theme', 'dark');
+  }else{
+    document.querySelector('html').setAttribute('data-theme', 'light');
+  }
   return (
     <div className="navbar  bg-base-300 flex justify-between">
       <div>
@@ -27,7 +35,7 @@ const Navbar = ({setDarkTheme, darkTheme}) => {
       {/* dark theme tooggle */}
       <label className="swap swap-rotate">
         {/* this hidden checkbox controls the state */}
-        <input type="checkbox" className="theme-controller" value="synthwave" onChange={() => {setDarkTheme(!darkTheme)}} />
+        <input type="checkbox" className="theme-controller" value="synthwave" checked={darkTheme} onChange={() => {setDarkTheme(!darkTheme)}} />
 
         {/* sun icon */}
         <svg
@@ -50,5 +58,6 @@ const Navbar = ({setDarkTheme, darkTheme}) => {
     </div>
   )
 }
+
 
 export default Navbar
