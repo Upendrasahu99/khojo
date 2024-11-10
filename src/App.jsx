@@ -1,15 +1,14 @@
-import  { useState } from 'react'
-import Navbar from './components/Navbar'
+// import  { useState } from 'react'
+// import Navbar from './components/Navbar'
 import AppRoute from './routes/AppRoute';
+import ResultContextProvider from './context/ResultContextProvider';
 
-const App = () => {
-
+const App = () => { 
+  
   return (
-    <AppRoute>
-      <div>
-        <Navbar />
-      </div>
-    </AppRoute>
+    <ResultContextProvider>
+      <AppRoute/>
+    </ResultContextProvider>
   )
 }
 

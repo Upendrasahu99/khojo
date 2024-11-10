@@ -10,8 +10,6 @@ const AppRoute = () => {
         // {index: true, element: <Navigate to={'/search'}/>},
         { path: '/search', element: <Result /> },
         { path: '/images', element: <Result /> },
-        { path: '/news', element: <Result /> },
-        { path: '/videos', element: <Result /> }
       ]
     }
   ])
