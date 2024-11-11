@@ -1,4 +1,4 @@
-import {createContext, useContext, useState} from 'react'
+import {createContext, useContext, useEffect, useState} from 'react'
 
 const ResultContext = createContext()
 
@@ -7,34 +7,39 @@ const ResultContext = createContext()
 
 const ResultContextProvider = ({children}) => {
   const [result, setResult] = useState([])
+    
   const [isLoading, setIsLoading] = useState(false)
-  const [searchItem, setSearchItem] = useState('')
+  const [searchItem, setSearchItem] = useState('google')
 
-  const getResults = async (type) => {
+  //?q=cricket
+  const getResults = async (query) => {
     setIsLoading(true)
-    const url = `https://google-search72.p.rapidapi.com/${type}?q=cricket&lr=en-US&num=10`;
+    const url = `https://google-web-search1.p.rapidapi.com/?query=${query}&limit=20&related_keywords=true`;
     const options = {
       method: 'GET',
       headers: {
         'x-rapidapi-key': 'b744819d85msh6083d3ac44bebd3p13e895jsnc899dd51e57c',
-        'x-rapidapi-host': 'google-search72.p.rapidapi.com'
+        'x-rapidapi-host': 'google-web-search1.p.rapidapi.com'
       }
     };
 
     try {
       const response = await fetch(url, options);
-      const result = await response.json();
-      console.log(result);
+      const data = await response.json();
+      // console.log(data);
+      await setResult(data.results)
+      // console.log(result)
     } catch (error) {
       console.error(error);
     }
-
-    setResult(result)
     setIsLoading(false)
   }
+
+
+
   return (
     <ResultContext.Provider value={{
-      getResults, result, searchItem, setSearchItem, isLoading
+      getResults, result, setResult,  searchItem, setSearchItem, isLoading
     }}>
       {children}
     </ResultContext.Provider>

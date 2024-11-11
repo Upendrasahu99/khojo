@@ -7,9 +7,8 @@ const AppRoute = () => {
       path: '/',
       element: <MainLayout/>,
       children: [
-        // {index: true, element: <Navigate to={'/search'}/>},
+        {index: true, element: <Navigate to={'/search'}/>},
         { path: '/search', element: <Result /> },
-        { path: '/images', element: <Result /> },
       ]
     }
   ])
