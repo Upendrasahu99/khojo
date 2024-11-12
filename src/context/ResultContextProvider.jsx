@@ -14,14 +14,15 @@ const ResultContextProvider = ({children}) => {
   //?q=cricket
   const getResults = async (query) => {
     setIsLoading(true)
-    const url = `https://google-web-search1.p.rapidapi.com/?query=${query}&limit=20&related_keywords=true`;
+    const url = `https://google-search74.p.rapidapi.com/?query=${query}&limit=10&related_keywords=true`;
     const options = {
       method: 'GET',
       headers: {
-        'x-rapidapi-key': 'b744819d85msh6083d3ac44bebd3p13e895jsnc899dd51e57c',
-        'x-rapidapi-host': 'google-web-search1.p.rapidapi.com'
+        'x-rapidapi-key': import.meta.env.API_KEY,
+        'x-rapidapi-host': 'google-search74.p.rapidapi.com'
       }
     };
+    
 
     try {
       const response = await fetch(url, options);

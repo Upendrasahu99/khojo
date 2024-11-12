@@ -10,7 +10,7 @@ const Result = () => {
 
   
   useEffect(() => {
-    // getResults(searchItem)
+    getResults(searchItem)
   }, [searchItem]) 
 
   if(isLoading) return <Loading/>
@@ -19,7 +19,7 @@ const Result = () => {
     <div className="flex flex-wrap justify-between space-y-6 sm:px-56">
     
       {result?.map(({url, title}, index) =>
-        (<div key={index} className="md:w-2/5 w-full">
+        (<div key={index} className=" w-full">
           <a href={url} target="_blank" rel="noreferrer">
             <p className="text-sm">
               {url.length > 30 ? url.substring(0, 30) : url}
